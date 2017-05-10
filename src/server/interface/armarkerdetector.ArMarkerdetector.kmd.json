@@ -38,6 +38,27 @@
           }
         },
         {
+          "name": "setOffset",
+          "doc": "TODO",
+          "params": [
+            {
+              "name": "x",
+              "doc": "TODO",
+              "type": "double"
+            },
+            {
+              "name": "y",
+              "doc": "TODO",
+              "type": "double"
+            },
+            {
+              "name": "z",
+              "doc": "TODO",
+              "type": "double"
+            }
+          ]
+        },
+        {
           "name": "setOverlayImage",
           "doc": "TODO",
           "params": [

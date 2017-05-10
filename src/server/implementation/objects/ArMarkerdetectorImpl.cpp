@@ -29,6 +29,11 @@ void ArMarkerdetectorImpl::setShowDebugLevel (int showDebugLevel)
   ArMarkerdetectorOpenCVImpl::setShowDebugLevel (showDebugLevel);
 }
 
+void ArMarkerdetectorImpl::setOffset (double x, double y, double z)
+{
+  ArMarkerdetectorOpenCVImpl::setOffset (x, y, z);
+}
+
 int ArMarkerdetectorImpl::getShowDebugLevel ()
 {
   ArMarkerdetectorOpenCVImpl::getShowDebugLevel ();

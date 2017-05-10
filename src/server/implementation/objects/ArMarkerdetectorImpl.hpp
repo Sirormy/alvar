@@ -47,6 +47,7 @@ public:
   virtual ~ArMarkerdetectorImpl () {};
 
   void setShowDebugLevel (int showDebugLevel);
+  void setOffset (double x, double y, double z);
   int getShowDebugLevel ();
   void setOverlayImage (const std::string &overlayImage);
   std::string getOverlayImage ();

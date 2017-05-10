@@ -113,6 +113,9 @@ ArProcess::ArProcess() : overlayScale(1.f), owndata(0), mShowDebugLevel(1) {
   pthread_mutex_init(&mMutex, NULL);
   owndata = new alvar::MarkerDetector<alvar::MarkerArtoolkit>();
   marker_size = 2.0;
+  x = 0.0;
+  y = 0.0;
+  z = 0.0;
   alvar::MarkerDetector<alvar::MarkerArtoolkit> &marker_detector = 
     *(alvar::MarkerDetector<alvar::MarkerArtoolkit> *)owndata;
   marker_detector.SetMarkerSize(marker_size,3,1.5);
@@ -143,6 +146,14 @@ float ArProcess::set_overlay_scale(float _overlayScale) {
   if (_overlayScale > 0.f) overlayScale=_overlayScale;
   else overlayScale=1.f;
   return overlayScale;
+}
+
+void ArProcess::setOffset(double xx, double yy, double zz){
+  x = xx;
+  y = yy;
+  z = zz;
+  std::cout<<"setOffset called"<<std::endl;
+  std::cout<<"xx:"<<xx<<"yy:"<<yy<<"zz:"<<zz<<std::endl;
 }
 
 bool ArProcess::set_overlay(const char *_overlay_image, const char *_overlay_text) {
@@ -246,11 +257,13 @@ int ArProcess::detect_marker(IplImage *image) {
       
       double visualize3d_points[4][3] = {
 	// square
-	{ -(marker_size/2), -(marker_size/2), marker_size },
-	{ -(marker_size/2),  (marker_size/2), marker_size },
-	{  (marker_size/2),  (marker_size/2), marker_size },
-	{  (marker_size/2), -(marker_size/2), marker_size },
+	{ -(marker_size/2) + x, -(marker_size/2) + y, z },
+	{ -(marker_size/2) + x,  (marker_size/2) + y, z },
+	{  (marker_size/2) + x,  (marker_size/2) + y, z },
+	{  (marker_size/2) + x, -(marker_size/2) + y, z },
       };
+      std::cout<<"offset"<<std::endl;
+      std::cout<<"x: "<<x<<"y: "<<y<<"z: "<<z<<std::endl;
 
       double visualize2d_points[4][2];
       

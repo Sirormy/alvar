@@ -27,11 +27,15 @@ public:
   ArProcess();
   ~ArProcess();
   int detect_marker(IplImage* img);
+  double x;
+  double y;
+  double z;
   bool set_overlay(const char *_overlay_image, const char *_overlay_text);
   std::string get_overlay_image() const { return overlay_image; } 
   std::string get_overlay_text() const { return overlay_text; } 
   float set_overlay_scale(float _overlayScale);
   float get_overlay_scale() const { return overlayScale; }
+  void setOffset(double x,double y,double z);
   void setShowDebugLevel(int level) { mShowDebugLevel = level; }
   int getShowDebugLevel() { return mShowDebugLevel; }
 };

@@ -37,9 +37,15 @@ void ArMarkerdetectorOpenCVImpl::process (cv::Mat &mat)
   }
 }
 
+
 void ArMarkerdetectorOpenCVImpl::setShowDebugLevel (int showDebugLevel)
 {
-  ar.setShowDebugLevel(showDebugLevel);
+    ar.setShowDebugLevel(showDebugLevel);
+}
+
+void ArMarkerdetectorOpenCVImpl::setOffset (double x, double y, double z)
+{
+	  ar.setOffset(x,y,z);
 }
 
 int ArMarkerdetectorOpenCVImpl::getShowDebugLevel ()
