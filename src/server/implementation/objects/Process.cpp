@@ -112,7 +112,7 @@ cv::Mat ArProcess::readImage(std::string uri) {
 ArProcess::ArProcess() : overlayScale(1.f), owndata(0), mShowDebugLevel(1) {
   pthread_mutex_init(&mMutex, NULL);
   owndata = new alvar::MarkerDetector<alvar::MarkerArtoolkit>();
-  marker_size = 2.0;
+  marker_size = 3.8;
   x = 0.0;
   y = 0.0;
   z = 0.0;
@@ -121,20 +121,45 @@ ArProcess::ArProcess() : overlayScale(1.f), owndata(0), mShowDebugLevel(1) {
   marker_detector.SetMarkerSize(marker_size,3,1.5);
   std::vector<int> id_vector;
   //number of markers
-  for(int i = 0; i < 5; ++i)
+  for(int i = 0; i < 12; ++i)
     id_vector.push_back(i);
   multi_marker = new alvar::MultiMarker(id_vector);
   //set pose relation between markers.
   pose.Reset();
   multi_marker->PointCloudAdd(0, marker_size, pose);
-  pose.SetTranslation(marker_size*1.75, 0, 0);
+
+  pose.SetTranslation(6.65, 0, 0);
   multi_marker->PointCloudAdd(1, marker_size, pose);
-  pose.SetTranslation(+marker_size*3.5, 0, 0);
+
+  pose.SetTranslation(9.975, 0, 3.325);
   multi_marker->PointCloudAdd(2, marker_size, pose);
-  pose.SetTranslation(+marker_size*5.25, 0, 0);
+
+  pose.SetTranslation(9.975, 0, 9.975);
   multi_marker->PointCloudAdd(3, marker_size, pose);
-  pose.SetTranslation(+marker_size*7.0, 0, 0);
+
+  pose.SetTranslation(0, -6.650, 0);
   multi_marker->PointCloudAdd(4, marker_size, pose);
+
+  pose.SetTranslation(6.65, -6.65, 0);
+  multi_marker->PointCloudAdd(5, marker_size, pose);
+
+  pose.SetTranslation(9.975, -6.65, 3.325);
+  multi_marker->PointCloudAdd(6, marker_size, pose);
+
+  pose.SetTranslation(9.975, -6.65, 9.975);
+  multi_marker->PointCloudAdd(7, marker_size, pose);
+
+  pose.SetTranslation(0, -13.3, 0);
+  multi_marker->PointCloudAdd(8, marker_size, pose);
+
+  pose.SetTranslation(6.65, -13.3, 0);
+  multi_marker->PointCloudAdd(9, marker_size, pose);
+
+  pose.SetTranslation(9.975, -13.3, 3.325);
+  multi_marker->PointCloudAdd(10, marker_size, pose);
+
+  pose.SetTranslation(9.975, -13.3, 9.975);
+  multi_marker->PointCloudAdd(11, marker_size, pose);
 }
 
 ArProcess::~ArProcess() {
